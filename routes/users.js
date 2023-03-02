@@ -4,15 +4,26 @@ const router = express.Router()
 router.use(logger)
 
 router.get("/", (req, res) => {    //can do '/users' too, need to change app.use in server.js
+    console.log(req.query.name)
     res.send('User List')
 })
 
 router.get("/new", (req, res) => {
-    res.send('User new form')
+    res.render("users/new")
+    // res.send('User new form')
 })  //keep it above dynamic paramter as it compiles top to bottom
 
 router.post('/', (req, res) => {
-    res.send("Create user")
+    const isValid = true
+    if(isValid){
+        users.push({firstName: req.body.firstName})
+        res.redirect(`/users/${users.length - 1}`)
+    } else {
+        console.log("Error")
+        res.render('users/new', { firstName: req.body.firstName})
+    }
+    // console.log(req.body.firstName)     //we need middleware to access body
+    // res.send("Hi " +req.body.firstName)
 })
 
 router
