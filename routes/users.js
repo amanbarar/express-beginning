@@ -1,6 +1,8 @@
 const express = require("express")
 const router = express.Router()
 
+router.use(logger)
+
 router.get("/", (req, res) => {    //can do '/users' too, need to change app.use in server.js
     res.send('User List')
 })
@@ -36,4 +38,12 @@ router.param("id", (req, res, next, id) => { // param is kind of middleware
     req.user = users[id]
     next()  //it will run infinitely until we call next
 }) 
+
+function logger(req, res, next){
+    console.log(req.originalUrl)
+    next()
+}
+
 module.exports = router     //to import it into our main app
+
+//there are user defined middlewares in express
