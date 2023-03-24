@@ -10,7 +10,7 @@ app.set('view engine', 'ejs')
 //get post put delete catch
 // app.get('/', (req, res, next) => {      //can put n-number of middleware in function
     // console.log('Here')
-    //res.sendStatus(500) //HTTP status code
+    // res.sendStatus(500) //HTTP status code
     // res.status(500).send("Hi")  //HTTP status in inspect console
     // res.status(500).json({ message: "Error"})
     // res.send('Hi')
